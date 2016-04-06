@@ -1,0 +1,32 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1><%= @account.name %>'s Youtube Videos</h1>
+    <p>Here are your videos that are stored on Youtube.</p>
+  </div>
+</div>
+
+<% if @videos.any? %>
+  <div class="container">
+    <h1>Latest videos</h1>
+    <div id="player-wrapper"></div>
+    
+      <div class="row">
+        <% @videos.each do |video| %>
+          <% if video %>
+            <div class="col-md-4">
+              <div class="yt_video thumbnail">
+                <%= link_to image_tag("https://img.youtube.com/vi/#{video.id}/mqdefault.jpg", alt: video.title,
+                                      class: 'img-rounded'),
+                            "https://www.youtube.com/watch?v=#{video.id}", target: '_blank' %>
+                <div class="caption">
+                  <h5><%= video.title %></h5>
+                  <p>Published at <%= video.published_at.strftime('%-d %B %Y %H:%M:%S') %></p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    
+  </div>
+<% end %>

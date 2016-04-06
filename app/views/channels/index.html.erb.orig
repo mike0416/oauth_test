@@ -1,0 +1,20 @@
+Name:  <%= @account.id %></br>
+Number of Videos: <%= @account.videos.count %></br>
+Video Names:</br>
+<ul>
+  <% @account.videos.each do |video| %>
+    <li><%= video.title %></li>
+    <li><%= video.id %></li>
+    <li><%= image_tag("https://img.youtube.com/vi/#{video.id}/default.jpg") %></li>
+   <% end %>
+</ul>
+
+
+<hr>
+
+
+Channel Title:  <%= @channel.title %></br>
+Video Count: <%= @channel.videos.count %></br>
+<% @channel.videos.each do |video| %>
+	<%= video.title %></br>
+<% end %>
